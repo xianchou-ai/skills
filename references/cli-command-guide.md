@@ -62,7 +62,54 @@ xianchou generate image \
 | `--resolution` | 分辨率选项 |
 | `--output-format` | 输出格式 |
 | `--number` | 生成数量 |
+| `--image-urls` | 逗号分隔的参考图 URL 或本地路径（传入后自动切换为图生图模式） |
 | `--poll` | 轮询到完成并自动 settle |
+
+## 图生图
+
+传入 `--image-urls` 参数时自动切换为图生图模式（`image-to-image`）：
+
+```bash
+xianchou generate image \
+  --prompt "将参考图转为水彩风格" \
+  --image-urls "./reference.png" \
+  --project-id <PROJECT_ID> \
+  --poll
+```
+
+`--image-urls` 支持本地文件路径，CLI 会自动上传到平台。
+
+## 上传文件
+
+将本地文件上传到献丑平台，获取可公开访问的 URL：
+
+```bash
+xianchou upload ./01.png
+```
+
+输出 JSON：
+
+```json
+{"success": true, "url": "https://xianchou.com/users/cli-uploads/..."}
+```
+
+支持的文件类型：
+- 图片：`.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`（最大 20MB）
+- 视频：`.mp4`, `.mov`, `.webm`（最大 100MB）
+- 音频：`.mp3`, `.wav`, `.m4a`, `.flac`, `.aac`（最大 50MB）
+
+## 本地文件自动上传
+
+`generate video` 和 `generate image` 的所有 URL 参数都支持传入本地文件路径。CLI 会自动检测非 URL 的值，上传文件后替换为平台 URL：
+
+```bash
+# 本地文件路径会自动上传
+xianchou generate video --mode first \
+  --prompt "让图片动起来" \
+  --first-frame-url ./scene01.png \
+  --project-id <PROJECT_ID> \
+  --poll
+```
 
 ## Markdown 插图
 

@@ -4,6 +4,12 @@
 
 本目录是 `xianchou` CLI 的 Agent Skill 定义。它指导 Agent 使用献丑 `/api/cli` 专用接口，为任意 Markdown/MDX 生成并插入图片。
 
+ClawHub 地址：[https://clawhub.ai/starlying/xianchou](https://clawhub.ai/starlying/xianchou)
+
+GitHub 地址：[https://github.com/xianchou-ai/skills](https://github.com/xianchou-ai/skills)
+
+CLI 地址：[https://www.npmjs.com/package/@xianchou/cli](https://www.npmjs.com/package/@xianchou/cli)
+
 ## 目录结构
 
 ```text
